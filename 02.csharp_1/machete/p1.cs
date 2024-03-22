@@ -1,19 +1,22 @@
-public class p1
+namespace p1
 {
-    public static void Correr()
+    public class Main
     {
-        var valores = new int[] { 2, 4, 1, 3 };
-        var resultado = sumarTodos(valores);
-        Console.WriteLine($"La suma dio {resultado}");
-    }
-
-    private static int sumarTodos(int[] valores)
-    {
-        var ret = 0;
-        foreach (var item in valores)
+        public static void Correr()
         {
-            ret += item;
+            var valores = new int[] { 2, 4, 1, 3 };
+            var resultado = SumarTodos(valores);
+            Console.WriteLine($"La suma dio {resultado}");
         }
-        return ret;
+
+        private static int SumarTodos(int[] valores)
+        {
+            var ret = 0;
+            foreach (var item in valores)
+            {
+                ret += item;
+            }
+            return ret;
+        }
     }
 }
