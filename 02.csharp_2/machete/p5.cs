@@ -1,13 +1,22 @@
-
 namespace p5
 {
     abstract class Item
     {
         public string nombre;
-        public abstract void Usar(Salud salud);
     }
 
-    class Arma : Item
+    interface IEquipable
+    {
+        void Equipar();
+    }
+
+
+    interface IUsable
+    {
+        void Usar(Salud salud);
+    }
+
+    class Arma : Item, IEquipable, IUsable
     {
         int danio;
 
@@ -16,18 +25,23 @@ namespace p5
             this.danio = danio;
         }
 
+        public void Equipar()
+        {
+            Console.WriteLine($"Equipando el arma {nombre}");
+        }
+
         public override string ToString()
         {
             return $"{nombre} hace {danio} de danio";
         }
 
-        public override void Usar(Salud salud)
+        public void Usar(Salud salud)
         {
             salud.Daniar(this.danio);
         }
     }
 
-    class Pocion : Item
+    class Pocion : Item, IUsable
     {
         int curacion;
 
@@ -36,9 +50,17 @@ namespace p5
             this.curacion = curacion;
         }
 
-        public override void Usar(Salud salud)
+        public void Usar(Salud salud)
         {
             salud.Curar(this.curacion);
+        }
+    }
+
+    class Armadura : Item, IEquipable
+    {
+        public void Equipar()
+        {
+            Console.WriteLine($"Equipando la armadura {nombre}");
         }
     }
 
@@ -77,16 +99,32 @@ namespace p5
     {
         public static void Correr()
         {
-            var inventario = new Item[] {
+            Console.WriteLine("Probando IUsable");
+
+            var usables = new IUsable[] {
                 new Arma(10) { nombre = "Espada"},
                 new Pocion(30),
             };
 
             var salud = new Salud(25);
 
-            foreach (Item item in inventario)
+            foreach (IUsable item in usables)
             {
                 item.Usar(salud);
+            }
+
+            Console.WriteLine("--------------------------------------");
+
+            Console.WriteLine("Probando IEquipable");
+
+            var equipables = new IEquipable[] {
+                new Arma(10) { nombre = "Espada"},
+                new Armadura() { nombre = "Cota de Malla" },
+            };
+
+            foreach (IEquipable e in equipables)
+            {
+                e.Equipar();
             }
         }
     }
