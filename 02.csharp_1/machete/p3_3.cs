@@ -18,7 +18,7 @@ namespace p3_3
 
     class Salud
     {
-        private int valor;
+        int valor;
 
         public Salud(int valorInicial)
         {

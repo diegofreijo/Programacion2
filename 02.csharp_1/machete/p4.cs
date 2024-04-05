@@ -82,6 +82,14 @@ namespace p4
                 new Pocion(30),
             };
 
+            // foreach (Item item in inventario)
+            // {
+            //     if(item es Arma)
+            //         item.Daniar(salud);
+            //     else if(item es Pocion)
+            //         item.Curar(salud);
+            // }
+
             var salud = new Salud(25);
 
             foreach (Item item in inventario)
