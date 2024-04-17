@@ -1,25 +1,25 @@
-﻿public class Fila1
+﻿public class ej1_3
 {
     public void Correr()
     {
-        List<string> fila = CrearFila();
+        List<string> fila = CrearFila(10);
         DibujarFila(fila);
     }
 
 
     // Dibuja una fila del mapa:
     // #......#
-    private List<string> CrearFila()
+    private List<string> CrearFila(int tamanio)
     {
         var ret = new List<string>();
+
         ret.Add("#");
-        ret.Add(".");
-        ret.Add(".");
-        ret.Add(".");
-        ret.Add(".");
-        ret.Add(".");
-        ret.Add(".");
+        for (int i = 1; i < tamanio - 1; i++)
+        {
+            ret.Add(".");
+        }
         ret.Add("#");
+
         return ret;
     }
 
@@ -30,5 +30,4 @@
             Console.Write(celda);
         }
     }
-
 }

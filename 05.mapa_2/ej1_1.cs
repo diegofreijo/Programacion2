@@ -1,4 +1,4 @@
-﻿public class Fila2
+﻿public class ej1_1
 {
     public void Correr()
     {
@@ -11,17 +11,15 @@
     // #......#
     private List<string> CrearFila()
     {
-        var ret = new List<string>
-        {
-            "#",
-            ".",
-            ".",
-            ".",
-            ".",
-            ".",
-            ".",
-            "#"
-        };
+        var ret = new List<string>();
+        ret.Add("#");
+        ret.Add(".");
+        ret.Add(".");
+        ret.Add(".");
+        ret.Add(".");
+        ret.Add(".");
+        ret.Add(".");
+        ret.Add("#");
         return ret;
     }
 
@@ -32,4 +30,5 @@
             Console.Write(celda);
         }
     }
+
 }
