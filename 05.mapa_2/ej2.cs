@@ -13,12 +13,12 @@
     {
         private List<string> celdas;
 
-        public Fila(int tamanio)
+        public Fila(int cantidadCeldas)
         {
             this.celdas = new List<string>();
 
             celdas.Add("#");
-            for (int i = 1; i < tamanio - 1; i++)
+            for (int i = 1; i < cantidadCeldas - 1; i++)
             {
                 celdas.Add(".");
             }
