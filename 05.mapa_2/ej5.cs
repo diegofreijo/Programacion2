@@ -4,11 +4,11 @@
     {
         public static void Correr()
         {
-            Habitacion habitacionGrande = new Habitacion(8, 10);
+            Habitacion habitacionGrande = new Habitacion(10, 5);
             Jugador jugador = new Jugador();
-            jugador.Mover(1, 5);
+            jugador.Mover(4, 3);
 
-            Lienzo lienzo = new Lienzo(10, 10);
+            Lienzo lienzo = new Lienzo(10, 5);
             habitacionGrande.Dibujar(lienzo);
             jugador.Dibujar(lienzo);
 
@@ -35,8 +35,8 @@
     class Lienzo
     {
         private char[,] celdas;
-        private int ancho;
-        private int alto;
+        private int ancho, alto;
+
         public Lienzo(int ancho, int alto)
         {
             this.ancho = ancho;
@@ -51,9 +51,9 @@
 
         public void MostrarEnPantalla()
         {
-            for (int x = 0; x < ancho; x++)
+            for (int y = 0; y < alto; y++)
             {
-                for (int y = 0; y < alto; y++)
+                for (int x = 0; x < ancho; x++)
                 {
                     Console.Write(celdas[x, y]);
                 }
@@ -81,8 +81,6 @@
 
         public void Dibujar(Lienzo lienzo)
         {
-            var mapa = new List<Fila>(filas);
-
             for (int y = 0; y < filas.Count(); y++)
             {
                 filas[y].Dibujar(lienzo, y);
