@@ -4,6 +4,9 @@
     {
         // ej1_1.Program.Correr();
         // ej1_2.Program.Correr();
-        ej1_3.Program.Correr();
+        // ej1_3.Program.Correr();
+
+        ej2_1.Program.Correr();
+        // ej2_2.Program.Correr();
     }
 }
