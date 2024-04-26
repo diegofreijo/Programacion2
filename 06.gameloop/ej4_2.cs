@@ -1,4 +1,4 @@
-﻿namespace ej3_2
+﻿namespace ej4_2
 {
     public class Program()
     {
@@ -28,13 +28,17 @@
             while (true)
             {
                 // Escucho Input
-                var input = Console.ReadKey();
+                ConsoleKeyInfo? input = null;
+                if (Console.KeyAvailable)
+                    input = Console.ReadKey();
 
                 // Actualizo Datos
                 ActualizarDatos(input);
 
                 // Dibujo Pantalla
                 DibujarPantalla();
+
+                Thread.Sleep(1000);
             }
         }
 
@@ -47,20 +51,25 @@
             rand = new Random();
         }
 
-        void ActualizarDatos(ConsoleKeyInfo input)
+        void ActualizarDatos(ConsoleKeyInfo? input)
         {
             // Actualizo el frame
             frame++;
 
-            // Muevo al jugador
-            if (input.Key == ConsoleKey.RightArrow)
-                jugador.MoverHacia(1, 0);
-            if (input.Key == ConsoleKey.LeftArrow)
-                jugador.MoverHacia(-1, 0);
-            if (input.Key == ConsoleKey.UpArrow)
-                jugador.MoverHacia(0, -1);
-            if (input.Key == ConsoleKey.DownArrow)
-                jugador.MoverHacia(0, 1);
+            if (input.HasValue)
+            {
+                var tecla = input.Value.Key;
+
+                // Muevo al jugador
+                if (tecla == ConsoleKey.RightArrow)
+                    jugador.MoverHacia(1, 0);
+                if (tecla == ConsoleKey.LeftArrow)
+                    jugador.MoverHacia(-1, 0);
+                if (tecla == ConsoleKey.UpArrow)
+                    jugador.MoverHacia(0, -1);
+                if (tecla == ConsoleKey.DownArrow)
+                    jugador.MoverHacia(0, 1);
+            }
 
             // Muevo al goblin
             goblin.MoverHacia(rand.Next(-1, 2), rand.Next(-1, 2));
