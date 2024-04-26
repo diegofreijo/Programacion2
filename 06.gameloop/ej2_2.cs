@@ -1,6 +1,6 @@
 ﻿
 
-namespace ej2_1
+namespace ej2_2
 {
     public class Program()
     {
@@ -70,13 +70,13 @@ namespace ej2_1
     class Jugador
     {
         private int x, y;
-        private Habitacion habitacion;
+        private IMapa mapa;
 
-        public Jugador(int x, int y, Habitacion habitacion)
+        public Jugador(int x, int y, IMapa mapa)
         {
             this.x = x;
             this.y = y;
-            this.habitacion = habitacion;
+            this.mapa = mapa;
         }
 
         public void MoverHacia(int x, int y)
@@ -84,7 +84,7 @@ namespace ej2_1
             var nuevoX = this.x + x;
             var nuevoY = this.y + y;
 
-            if (habitacion.EstaLibre(nuevoX, nuevoY))
+            if (mapa.EstaLibre(nuevoX, nuevoY))
             {
                 this.x = nuevoX;
                 this.y = nuevoY;
@@ -130,7 +130,12 @@ namespace ej2_1
         }
     }
 
-    class Habitacion
+    interface IMapa
+    {
+        bool EstaLibre(int x, int y);
+    }
+
+    class Habitacion : IMapa
     {
         private List<Fila> filas;
 
@@ -155,7 +160,7 @@ namespace ej2_1
             }
         }
 
-        internal bool EstaLibre(int x, int y)
+        public bool EstaLibre(int x, int y)
         {
             return filas[y].EstaLibre(x);
         }

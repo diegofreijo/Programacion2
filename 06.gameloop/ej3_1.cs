@@ -1,6 +1,4 @@
-﻿
-
-namespace ej2_1
+﻿namespace ej3_1
 {
     public class Program()
     {
@@ -13,7 +11,8 @@ namespace ej2_1
 
     class Juego
     {
-        Jugador jugador;
+        int frame;
+        Personaje jugador, goblin;
         Habitacion habitacion;
 
         public void CorrerJuego()
@@ -40,12 +39,18 @@ namespace ej2_1
 
         void Inicializacion()
         {
+            frame = 0;
             habitacion = new Habitacion(10, 5);
-            jugador = new Jugador(2, 2, habitacion);
+            jugador = new Personaje(2, 2, habitacion, '@');
+            goblin = new Personaje(1, 1, habitacion, 'g');
         }
 
         void ActualizarDatos(ConsoleKeyInfo input)
         {
+            // Actualizo el frame
+            frame++;
+
+            // Muevo al jugador
             if (input.Key == ConsoleKey.RightArrow)
                 jugador.MoverHacia(1, 0);
             if (input.Key == ConsoleKey.LeftArrow)
@@ -54,6 +59,9 @@ namespace ej2_1
                 jugador.MoverHacia(0, -1);
             if (input.Key == ConsoleKey.DownArrow)
                 jugador.MoverHacia(0, 1);
+
+            // Muevo al goblin
+            goblin.MoverHacia(1, 0);
         }
 
         void DibujarPantalla()
@@ -61,22 +69,26 @@ namespace ej2_1
             Lienzo lienzo = new Lienzo(10, 5);
             habitacion.Dibujar(lienzo);
             jugador.Dibujar(lienzo);
+            goblin.Dibujar(lienzo);
 
             lienzo.MostrarEnPantalla();
+            Console.WriteLine($"Frame: {frame}");
         }
 
     }
 
-    class Jugador
+    class Personaje
     {
         private int x, y;
-        private Habitacion habitacion;
+        private IMapa mapa;
+        private char dibujo;
 
-        public Jugador(int x, int y, Habitacion habitacion)
+        public Personaje(int x, int y, IMapa mapa, char dibujo)
         {
             this.x = x;
             this.y = y;
-            this.habitacion = habitacion;
+            this.mapa = mapa;
+            this.dibujo = dibujo;
         }
 
         public void MoverHacia(int x, int y)
@@ -84,7 +96,7 @@ namespace ej2_1
             var nuevoX = this.x + x;
             var nuevoY = this.y + y;
 
-            if (habitacion.EstaLibre(nuevoX, nuevoY))
+            if (mapa.EstaLibre(nuevoX, nuevoY))
             {
                 this.x = nuevoX;
                 this.y = nuevoY;
@@ -93,7 +105,7 @@ namespace ej2_1
 
         public void Dibujar(Lienzo lienzo)
         {
-            lienzo.Dibujar(x, y, '@');
+            lienzo.Dibujar(x, y, dibujo);
         }
     }
 
@@ -130,7 +142,12 @@ namespace ej2_1
         }
     }
 
-    class Habitacion
+    interface IMapa
+    {
+        bool EstaLibre(int x, int y);
+    }
+
+    class Habitacion : IMapa
     {
         private List<Fila> filas;
 
@@ -155,7 +172,7 @@ namespace ej2_1
             }
         }
 
-        internal bool EstaLibre(int x, int y)
+        public bool EstaLibre(int x, int y)
         {
             return filas[y].EstaLibre(x);
         }
