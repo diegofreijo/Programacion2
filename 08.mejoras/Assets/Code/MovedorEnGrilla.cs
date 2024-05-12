@@ -1,0 +1,37 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Tilemaps;
+
+public class MovedorEnGrilla : MonoBehaviour
+{
+    public Tilemap obstaculosTilemap;
+
+    public void Mover(Vector2 direccion)
+    {
+        // Redondeo la nueva posicion a un entero para que no hallan errores de suma
+        // de decimales. Asi me aseguro que siempre se quedan en su posicion de la celda
+        var nuevaPosicion = new Vector3(
+            transform.position.x + Mathf.RoundToInt(direccion.x),
+            transform.position.y + Mathf.RoundToInt(direccion.y),
+            0
+        );
+
+        if (EstaVacio(nuevaPosicion))
+        {
+            // Debug.Log($"{nuevaPosicion} esta vacio");
+            transform.position = nuevaPosicion;
+        }
+    }
+
+    private bool EstaVacio(Vector3 nuevaPosicion)
+    {
+        // Convierto posiciones del mundo a celdas en la grilla
+        var posicionEnGrilla = obstaculosTilemap.WorldToCell(nuevaPosicion);
+        
+        // Veo si en esa celda hay obstaculo o no
+        return !obstaculosTilemap.HasTile(posicionEnGrilla);
+    }
+}
