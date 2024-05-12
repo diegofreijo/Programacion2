@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1814657235499206633}
   - component: {fileID: 464322892343717458}
   m_Layer: 8
-  m_Name: Daga
+  m_Name: Daga_Demo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

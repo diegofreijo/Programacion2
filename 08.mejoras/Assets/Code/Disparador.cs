@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,16 +23,17 @@ public class Disparador : MonoBehaviour
         var mouseEnMundo = camaraPrincipal.ScreenToWorldPoint(Input.mousePosition);
 
         // El vector de direccion es destino - origen
-        var direccionDisparo = mouseEnMundo - origen;
+        // El vector tiene que estar normalizado porque es una direccion. Quiero que su
+        // longitud sea igual a 1.
+        var direccionDisparo = (mouseEnMundo - origen).normalized;
         direccionDisparo.z = 0f;
 
         // Lanzo el disparo en la direccion que calcule
         var rbDisparo = goDisparo.GetComponent<Rigidbody2D>();
-        // var destino = new Vector3(
-        //     mouseEnMundo.x,
-        //     mouseEnMundo.y,
-        //     0
-        // );
         rbDisparo.AddForce(direccionDisparo * potenciaDisparo);
+
+        // Calculo la rotacion que tengo que darle al proyectil para que mire hacia adonde quiero
+        float angulo = Mathf.Atan2(direccionDisparo.y, direccionDisparo.x) * Mathf.Rad2Deg;
+        goDisparo.transform.eulerAngles = new Vector3(0, 0, angulo);
     }
 }
