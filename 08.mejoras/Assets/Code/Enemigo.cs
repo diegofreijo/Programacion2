@@ -16,9 +16,7 @@ public class Enemigo : MonoBehaviour
     {
         var saludDelOtro = collision.gameObject.GetComponent<Salud>();
         if (saludDelOtro != null)
-        {
             saludDelOtro.Daniar(100);
-        }
     }
 
     private IEnumerator Mover()
