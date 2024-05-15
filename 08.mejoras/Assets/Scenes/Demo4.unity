@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa77d9ac006b4874d87dcbec3f5acd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreEscena: Principal
+  nombreEscena: Demo4
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,11 +2970,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1513696211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3568a4f9bb4d44b8e34210809dbbd8, type: 3}
+  m_Script: {fileID: 11500000, guid: eca299e8838f18e459925638579fd038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   restante: 1
-  canvas: {fileID: 0}
+  alMorir:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1621500494
 GameObject:
   m_ObjectHideFlags: 0
@@ -2989,9 +2991,9 @@ GameObject:
   - component: {fileID: 1621500497}
   - component: {fileID: 1621500500}
   - component: {fileID: 1621500499}
-  - component: {fileID: 1621500501}
   - component: {fileID: 1621500502}
   - component: {fileID: 1621500503}
+  - component: {fileID: 1621500504}
   m_Layer: 6
   m_Name: Jugador
   m_TagString: Untagged
@@ -3181,20 +3183,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8}
   m_EdgeRadius: 0
---- !u!114 &1621500501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1621500494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca3568a4f9bb4d44b8e34210809dbbd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  restante: 1
-  canvas: {fileID: 2124587643}
 --- !u!114 &1621500502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3223,6 +3211,34 @@ MonoBehaviour:
   prefabDisparo: {fileID: 7632880355173078966, guid: fd513333c354a924c9ab53cbe1db7946, type: 3}
   camaraPrincipal: {fileID: 519420031}
   potenciaDisparo: 1000
+--- !u!114 &1621500504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621500494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eca299e8838f18e459925638579fd038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restante: 1
+  alMorir:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2124587643}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &2124587643
 GameObject:
   m_ObjectHideFlags: 0

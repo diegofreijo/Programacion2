@@ -14,7 +14,7 @@ public class Enemigo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var saludDelOtro = collision.gameObject.GetComponent<Salud>();
+        var saludDelOtro = collision.gameObject.GetComponent<ISalud>();
         if (saludDelOtro != null)
             saludDelOtro.Daniar(100);
     }

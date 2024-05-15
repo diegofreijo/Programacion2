@@ -1,6 +1,13 @@
 using UnityEngine;
 
-public class Salud : MonoBehaviour
+// Esta interfaz la tuve que hacer para que en el mismo proyecto pueda tener
+// varias versiones de la Salud. Puede que ustedes no lo necesiten.
+public interface ISalud
+{
+    void Daniar(int danio);
+}
+
+public class Salud : MonoBehaviour, ISalud
 {
     public int restante = 100;
     public GameObject canvas;
