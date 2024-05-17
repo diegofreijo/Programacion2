@@ -26,11 +26,13 @@ public class MovedorEnGrilla : MonoBehaviour
         }
     }
 
-    private bool EstaVacio(Vector3 nuevaPosicion)
+    private bool EstaVacio(Vector3 posicionEnMundo)
     {
         // Convierto posiciones del mundo a celdas en la grilla
-        var posicionEnGrilla = obstaculosTilemap.WorldToCell(nuevaPosicion);
-        
+        Vector3Int posicionEnGrilla = obstaculosTilemap.WorldToCell(posicionEnMundo);
+
+        Debug.Log($"mundo: {posicionEnMundo} - grilla: {posicionEnGrilla}");
+
         // Veo si en esa celda hay obstaculo o no
         return !obstaculosTilemap.HasTile(posicionEnGrilla);
     }

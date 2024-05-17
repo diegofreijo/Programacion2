@@ -22,6 +22,8 @@ public class Disparador : MonoBehaviour
         // Lo tiene que hacer la camara porque es la unica que entiende que se esta viendo y adonde.
         var mouseEnMundo = camaraPrincipal.ScreenToWorldPoint(Input.mousePosition);
 
+        Debug.Log($"pantalla: {Input.mousePosition} - mundo: {mouseEnMundo}");
+
         // El vector de direccion es destino - origen
         // El vector tiene que estar normalizado porque es una direccion. Quiero que su
         // longitud sea igual a 1.
