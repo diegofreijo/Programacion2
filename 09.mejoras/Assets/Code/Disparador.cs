@@ -27,7 +27,8 @@ public class Disparador : MonoBehaviour
         // El vector de direccion es destino - origen
         // El vector tiene que estar normalizado porque es una direccion. Quiero que su
         // longitud sea igual a 1.
-        var direccionDisparo = (mouseEnMundo - origen).normalized;
+        Vector3 vectorDiferencia = mouseEnMundo - origen;
+        var direccionDisparo = vectorDiferencia.normalized;
         direccionDisparo.z = 0f;
 
         // Lanzo el disparo en la direccion que calcule

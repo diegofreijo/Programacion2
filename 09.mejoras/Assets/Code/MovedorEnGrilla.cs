@@ -31,7 +31,7 @@ public class MovedorEnGrilla : MonoBehaviour
         // Convierto posiciones del mundo a celdas en la grilla
         Vector3Int posicionEnGrilla = obstaculosTilemap.WorldToCell(posicionEnMundo);
 
-        Debug.Log($"mundo: {posicionEnMundo} - grilla: {posicionEnGrilla}");
+        // Debug.Log($"mundo: {posicionEnMundo} - grilla: {posicionEnGrilla}");
 
         // Veo si en esa celda hay obstaculo o no
         return !obstaculosTilemap.HasTile(posicionEnGrilla);
