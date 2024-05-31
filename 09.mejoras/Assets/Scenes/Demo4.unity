@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1133,7 +1132,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: fba0e74917ea7dc4eb0105be3a6632c7, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 50
-    m_Data: {fileID: -1269930580, guid: 38b4c539beb8d044fa104e577d3bd29c, type: 3}
+    m_Data: {fileID: 671849948, guid: 38b4c539beb8d044fa104e577d3bd29c, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 50
     m_Data:
@@ -2727,7 +2726,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 108
-    m_Data: {fileID: -1282132533, guid: 38b4c539beb8d044fa104e577d3bd29c, type: 3}
+    m_Data: {fileID: 25286474, guid: 38b4c539beb8d044fa104e577d3bd29c, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 108
     m_Data:
@@ -2850,7 +2849,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -1727193479, guid: 38b4c539beb8d044fa104e577d3bd29c, type: 3}
+  m_Sprite: {fileID: 574521496, guid: 38b4c539beb8d044fa104e577d3bd29c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3042,7 +3041,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 2043951875, guid: 38b4c539beb8d044fa104e577d3bd29c, type: 3}
+  m_Sprite: {fileID: -1071612962, guid: 38b4c539beb8d044fa104e577d3bd29c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
