@@ -11,5 +11,7 @@ public class Explosion : MonoBehaviour
         GetComponent<SpriteRenderer>()
             .DOFade(0f, tiempo)
             .OnComplete(() => Destroy(gameObject));
+
+        Camara.Instancia.ScreenShake();
     }
 }
