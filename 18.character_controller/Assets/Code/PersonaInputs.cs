@@ -11,6 +11,8 @@ public class PersonaInputs : MonoBehaviour
     public bool sprint;
     public bool aim;
     public bool alwaysAiming = false;
+    public bool shoot;
+
 
     [Header("Movement Settings")]
     public bool analogMovement;
@@ -53,6 +55,12 @@ public class PersonaInputs : MonoBehaviour
         if (!alwaysAiming)
             AimInput(value.isPressed);
     }
+
+    public void OnShoot(InputValue value)
+    {
+        ShootInput(value.isPressed);
+    }
+
 #endif
 
 
@@ -80,6 +88,12 @@ public class PersonaInputs : MonoBehaviour
     {
         aim = newAimState;
     }
+
+    public void ShootInput(bool newState)
+    {
+        shoot = newState;
+    }
+
 
     private void OnApplicationFocus(bool hasFocus)
     {

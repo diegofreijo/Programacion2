@@ -25,6 +25,12 @@ public class Apuntador : MonoBehaviour
     public Transform aimTarget;
     public LayerMask aimColliderMask = new LayerMask();
 
+    [Header("Disparo")]
+    public GameObject balaPrefab;
+    public Transform balaSpawnPosition;
+
+
+
     private int aimLayerIndex;
 
     private void Start()
@@ -43,8 +49,7 @@ public class Apuntador : MonoBehaviour
 
     private void Aiming()
     {
-
-
+        aimTarget.gameObject.SetActive(true);
         apuntandoCamara.Priority = prioridadApuntando;
 
         crosshair.SetActive(true);
@@ -56,8 +61,10 @@ public class Apuntador : MonoBehaviour
         MoveAimTarget();
     }
 
+
     private void NoAiming()
     {
+        aimTarget.gameObject.SetActive(false);
         apuntandoCamara.Priority = 0;
 
         crosshair.SetActive(false);
@@ -69,6 +76,7 @@ public class Apuntador : MonoBehaviour
 
     private void MoveAimTarget()
     {
+        // Aim
         var mouseWorldPosition = Vector3.zero;
 
         var screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
@@ -81,5 +89,14 @@ public class Apuntador : MonoBehaviour
 
         var aimDirection = (mouseWorldPosition - transform.position).normalized;
         transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 30f);
+
+        // Disparo
+        if (_input.shoot)
+        {
+            var balaDirection = (mouseWorldPosition - balaSpawnPosition.position).normalized;
+
+            Instantiate(balaPrefab, balaSpawnPosition.position, Quaternion.LookRotation(balaDirection, Vector3.up));
+        }
+
     }
 }
