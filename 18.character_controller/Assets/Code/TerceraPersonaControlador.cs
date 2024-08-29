@@ -11,10 +11,8 @@ public class TerceraPersonaControlador : MonoBehaviour
     [Header("Player")]
     [Tooltip("Move speed of the character in m/s")]
     public float MoveSpeed = 2.0f;
-
     [Tooltip("Sprint speed of the character in m/s")]
     public float SprintSpeed = 5.335f;
-
     [Tooltip("How fast the character turns to face movement direction")]
     [Range(0.0f, 0.3f)]
     public float RotationSmoothTime = 0.12f;
@@ -72,8 +70,6 @@ public class TerceraPersonaControlador : MonoBehaviour
     [Header("Acciones")]
     [Tooltip("Las acciones de input a usar")]
     public PersonaInputs _input;
-
-
 
 
 
@@ -191,6 +187,7 @@ public class TerceraPersonaControlador : MonoBehaviour
         }
     }
 
+
     private void CameraRotation()
     {
         // if there is an input and camera position is not fixed
@@ -208,8 +205,11 @@ public class TerceraPersonaControlador : MonoBehaviour
         _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
         // Cinemachine will follow this target
-        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
-            _cinemachineTargetYaw, 0.0f);
+        CinemachineCameraTarget.transform.rotation = Quaternion.Euler(
+            _cinemachineTargetPitch + CameraAngleOverride,
+            _cinemachineTargetYaw,
+            0.0f
+        );
     }
 
     private void Move()
@@ -261,8 +261,11 @@ public class TerceraPersonaControlador : MonoBehaviour
             float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
                 RotationSmoothTime);
 
-            // rotate to face input direction relative to camera position
-            transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+            if (!_input.aim)
+            {
+                // rotate to face input direction relative to camera position
+                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+            }
         }
 
 

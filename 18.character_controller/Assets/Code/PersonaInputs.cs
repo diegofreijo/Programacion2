@@ -10,6 +10,7 @@ public class PersonaInputs : MonoBehaviour
     public bool jump;
     public bool sprint;
     public bool aim;
+    public bool alwaysAiming = false;
 
     [Header("Movement Settings")]
     public bool analogMovement;
@@ -17,6 +18,11 @@ public class PersonaInputs : MonoBehaviour
     [Header("Mouse Cursor Settings")]
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
+
+    private void Start()
+    {
+        this.aim = alwaysAiming;
+    }
 
 #if ENABLE_INPUT_SYSTEM
     public void OnMove(InputValue value)
@@ -44,7 +50,8 @@ public class PersonaInputs : MonoBehaviour
 
     public void OnAim(InputValue value)
     {
-        AimInput(value.isPressed);
+        if (!alwaysAiming)
+            AimInput(value.isPressed);
     }
 #endif
 
