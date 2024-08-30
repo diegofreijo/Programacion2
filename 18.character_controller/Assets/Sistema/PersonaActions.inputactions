@@ -40,24 +40,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Aim",
-                    "type": "PassThrough",
-                    "id": "5600503f-6d24-453d-8c7b-5177160a1885",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Shoot",
-                    "type": "PassThrough",
-                    "id": "f065b078-a665-47de-97a8-412f37faad4f",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -234,28 +216,6 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1044a796-55bc-42e1-b46a-91711dc4dccf",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e5775ab7-8990-42ea-8eab-bf4b5e34e55f",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
