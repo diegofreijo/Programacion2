@@ -1,6 +1,7 @@
 using System;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class TerceraPersonaDisparadorController : MonoBehaviour
 {
@@ -21,8 +22,13 @@ public class TerceraPersonaDisparadorController : MonoBehaviour
     public GameObject balaPrefab;
     public Transform balaSpawnPosition;
 
+    public Rig aimRig;
+
 
     private int aimLayerIndex;
+
+
+
 
     private void Start()
     {
@@ -42,8 +48,9 @@ public class TerceraPersonaDisparadorController : MonoBehaviour
         animator.SetLayerWeight(aimLayerIndex, 1f);
         aimCamera.Priority = prioridadApuntando;
 
-
         crosshair.SetActive(true);
+        aimTarget.gameObject.SetActive(true);
+        aimRig.weight = 1f;
 
         MoveAimTarget();
     }
@@ -54,6 +61,8 @@ public class TerceraPersonaDisparadorController : MonoBehaviour
         aimCamera.Priority = 0;
 
         crosshair.SetActive(false);
+        aimTarget.gameObject.SetActive(false);
+        aimRig.weight = 0f;
     }
 
     private void MoveAimTarget()
@@ -72,8 +81,8 @@ public class TerceraPersonaDisparadorController : MonoBehaviour
 
         // Hago que el jugador mire en la direccion del mouse en el mundo
         var aimDirection = (mouseWorldPosition - transform.position).normalized;
-        transform.forward = aimDirection;
-        // transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 30f);
+        // transform.forward = aimDirection;
+        transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 10f);
 
         // Disparo
         if (input.shoot)
