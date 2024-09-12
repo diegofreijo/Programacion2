@@ -10,17 +10,26 @@ public class MeleeController : MonoBehaviour
     public Animator animator;
     public TerceraPersonaInputs input;
 
+    private int animIDShoot;
+
+    private void Start()
+    {
+        animIDShoot = Animator.StringToHash("Shoot");
+    }
+
     private void Update()
     {
+        animator.SetBool(animIDShoot, input.shoot);
         // Disparo
-        if (input.shoot)
-        {
-            // var balaDirection = (mouseWorldPosition - balaSpawnPosition.position).normalized;
+        // if (input.shoot)
+        // {
 
-            // Instantiate(
-            //     balaPrefab, balaSpawnPosition.position,
-            //     Quaternion.LookRotation(balaDirection, Vector3.up)
-            // );
-        }
+        // var balaDirection = (mouseWorldPosition - balaSpawnPosition.position).normalized;
+
+        // Instantiate(
+        //     balaPrefab, balaSpawnPosition.position,
+        //     Quaternion.LookRotation(balaDirection, Vector3.up)
+        // );
+        // }
     }
 }
