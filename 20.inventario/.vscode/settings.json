@@ -43,7 +43,7 @@
         "**/*.unity": true,
         "build/": true,
         "Build/": true,
-        "Library/": true,
+        "Library/": false,
         "library/": true,
         "obj/": true,
         "Obj/": true,
@@ -53,5 +53,6 @@
     },
     "dotnet.defaultSolution": "20.inventario.sln",
     "git.ignoreLimitWarning": true,
-    "dotnet.preferCSharpExtension": true
+    "dotnet.preferCSharpExtension": true,
+    "explorer.excludeGitIgnore": false
 }

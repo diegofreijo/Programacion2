@@ -10,16 +10,25 @@ public class MeleeController : MonoBehaviour
     public Animator animator;
     public TerceraPersonaInputs input;
 
+    protected bool canShoot = true;
+
     private int animIDShoot;
 
-    private void Start()
+    void Start()
     {
         animIDShoot = Animator.StringToHash("Shoot");
+        InitializeWeapon();
+    }
+
+    protected virtual void InitializeWeapon()
+    {
     }
 
     private void Update()
     {
-        animator.SetBool(animIDShoot, input.shoot);
+        if (canShoot)
+            animator.SetBool(animIDShoot, input.shoot);
+
         // Disparo
         // if (input.shoot)
         // {
