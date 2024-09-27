@@ -10,41 +10,35 @@ public class MeleeController : MonoBehaviour
     public Animator animator;
     public TerceraPersonaInputs input;
 
-    public Transform aimTarget;
+    protected bool canShoot = true;
+
+    private int animIDShoot;
+
+    void Start()
+    {
+        animIDShoot = Animator.StringToHash("Shoot");
+        InitializeWeapon();
+    }
+
+    protected virtual void InitializeWeapon()
+    {
+    }
 
     private void Update()
     {
-        MoveAimTarget();
-    }
-
-    private void MoveAimTarget()
-    {
-        // Aim
-        var mouseWorldPosition = Vector3.zero;
-
-        var screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
-        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
-        if (Physics.Raycast(ray, out RaycastHit hit, 999f, aimColliderMask))
-        {
-            // Muevo el objetivo para que la pistola lo mire
-            aimTarget.position = hit.point;
-            mouseWorldPosition = hit.point;
-        }
-
-        // Hago que el jugador mire en la direccion del mouse en el mundo
-        var aimDirection = (mouseWorldPosition - transform.position).normalized;
-        // transform.forward = aimDirection;
-        transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 1f);
+        if (canShoot)
+            animator.SetBool(animIDShoot, input.shoot);
 
         // Disparo
-        if (input.shoot)
-        {
-            // var balaDirection = (mouseWorldPosition - balaSpawnPosition.position).normalized;
+        // if (input.shoot)
+        // {
 
-            // Instantiate(
-            //     balaPrefab, balaSpawnPosition.position,
-            //     Quaternion.LookRotation(balaDirection, Vector3.up)
-            // );
-        }
+        // var balaDirection = (mouseWorldPosition - balaSpawnPosition.position).normalized;
+
+        // Instantiate(
+        //     balaPrefab, balaSpawnPosition.position,
+        //     Quaternion.LookRotation(balaDirection, Vector3.up)
+        // );
+        // }
     }
 }
