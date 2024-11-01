@@ -53,6 +53,12 @@ public class Sensor : MonoBehaviour
         }
     }
 
+    public GameObject GetClosestGameObject(string tag)
+    {
+        var ret = GetClosestTarget(tag);
+        return ret == null ? null : ret.gameObject;
+    }
+
     public Transform GetClosestTarget(string tag)
     {
         if (detectedObjects.Count == 0) return null;

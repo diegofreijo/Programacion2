@@ -4196,6 +4196,7 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 371469620514652701
   - rid: 371469620514652702
+  - rid: 2650478371730883490
   references:
     version: 2
     RefIds:
@@ -4219,6 +4220,15 @@ MonoBehaviour:
         m_Value:
         - {fileID: 1389186144}
         - {fileID: 933110618}
+    - rid: 2650478371730883490
+      type: {class: 'BlackboardVariable`1[[EstadosEnemigo, Assembly-CSharp]]', ns: Unity.Behavior,
+        asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7314692638953035280
+          m_Value1: 8544681813819601706
+        Name: EstadoActual
+        m_Value: 2
 --- !u!114 &1531773643
 MonoBehaviour:
   m_ObjectHideFlags: 0

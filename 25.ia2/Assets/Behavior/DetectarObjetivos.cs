@@ -6,12 +6,11 @@ using Unity.Properties;
 using UnityEngine.AI;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "DetectarObjetivos", story: "[Agente] detecta [objetivo]", category: "Action", id: "bec64270dcba24b3f866abc0daa2b223")]
+[NodeDescription(name: "DetectarObjetivos", story: "Ver si [Agente] detecta al [objetivo]", category: "Action", id: "bec64270dcba24b3f866abc0daa2b223")]
 public partial class DetectarObjetivosAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agente;
     [SerializeReference] public BlackboardVariable<GameObject> Objetivo;
-
     NavMeshAgent agente;
     Sensor sensor;
 
@@ -24,12 +23,8 @@ public partial class DetectarObjetivosAction : Action
 
     protected override Status OnUpdate()
     {
-        var jugador = sensor.GetClosestTarget("Player");
-        if (jugador == null)
-            return Status.Running;
-
-        Objetivo.Value = jugador.gameObject;
-        return Status.Success;
+        Objetivo.Value = sensor.GetClosestGameObject("Player");
+        return Objetivo.Value == null ? Status.Running : Status.Success;
     }
 
     protected override void OnEnd()
