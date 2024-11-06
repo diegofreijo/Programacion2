@@ -23,8 +23,10 @@ namespace Unity.Behavior.Demo
             }
 
             float distance = Vector3.Distance(Origin.Value.position, Target.Value.position);
-            return IsLookingAtTarget(Origin, Target.Value.position, Angle)
-                && HasTargetInView(Origin.Value.position, Target);
+            var looking = IsLookingAtTarget(Origin, Target.Value.position, Angle);
+            var inView = HasTargetInView(Origin.Value.position, Target);
+            // Debug.Log($"looking {looking}, inView {inView}");
+            return looking && inView;
         }
 
         private static bool IsLookingAtTarget(Transform origin, Vector3 targetPosition, float angle)
@@ -37,11 +39,17 @@ namespace Unity.Behavior.Demo
 
         private static bool HasTargetInView(Vector3 origin, Transform target)
         {
-            if (Physics.Linecast(origin, target.position, out var t))
+            // Elevo los puntos un poco para que el rayo no choque contra el piso
+            var originAjustado = origin + Vector3.up;
+            var targetAjustado = target.position + Vector3.up;
+            if (Physics.Linecast(originAjustado, targetAjustado, out var t))
             {
+                // Debug.Log($"si que hay linecast, {t.collider.gameObject.name}, {target.gameObject.name}");
+                // Debug.Log($"{t.collider.gameObject.layer}, {target.gameObject.layer}");
                 return t.collider.gameObject == target.gameObject;
             }
 
+            // Debug.Log($"no linecast");
             return false;
         }
     }
